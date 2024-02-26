@@ -1,6 +1,10 @@
 "use client"
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { motion } from "framer-motion"
+import { Black_Ops_One, Righteous, Audiowide } from 'next/font/google'
+
+const inter = Audiowide({ subsets: ['latin'], weight: ['400'] })
 
 const Home = () => {
   const [windowWidth, setWindowWidth] = useState(0);
@@ -24,24 +28,32 @@ const Home = () => {
 
   return (
     <main
-      style={{ backgroundImage: "url('ea.jpg')" }}
-      className="bg-cover bg-no-repeat bg-center flex min-h-screen flex-col items-center justify-between p-6 sm:p-24"
+      className=""
     >
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-lg"></div>
+      <div className='flex items-center  h-screen'>
 
-      <div className="flex mt-auto self-end items-center text-2xl sm:text-6xl z-10">
-        <div className="p-1 ml-4">
-          <p className="flex items-center justify-center">
-            <Image alt="ET to the Moon!" width={windowWidth >= 640 ? 73 : 26} height={63} src="/ealogo.png" />
-            Effective Acceleration
-          </p>
-          <p
-            style={{ width: windowWidth >= 640 ? '700px' : '100%' }}
-            className="text-sm sm:text-lg ml-2"
-          >
-            A transformative movement that is dedicated to the rapid acceleration of the Ethiopian tech landscape by utilizing various resources and spearheading open-source movements
-          </p>
+        <div className={inter.className + ' self-end pb-10'}>
+          <h1 className='text-black  text-7xl w-1/2 ml-20'>Accelerating <span style={{ color: '#F84A27' }}>Ethiopia</span></h1>
         </div>
+
+
+        {/* <Image src='/lionmajestic.png' width={1500} height={100} alt='lion' /> */}
+        <motion.img
+          src={'/lionmajestic.png'}
+          alt="lion"
+          style={{ transformStyle: "preserve-3d", }}
+          animate={{
+            y: ["-10px", "10px", "-10px"],
+            transition: {
+              duration: 3.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            },
+          }}
+
+        />
+
+
       </div>
     </main>
   );
